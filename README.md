@@ -7,5 +7,5 @@ This app was designed to accomodate students who are looking for Khan Academy st
 ## Dependencies
 
 - **React** Front-End Javascript Library
-- **Node.js** Back-End Javascript Runetime Environment
+- **Node.js** Back-End Javascript Runtime Environment
 - **Express.js** Back-End Web Application Framework
