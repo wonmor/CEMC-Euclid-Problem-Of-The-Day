@@ -24,7 +24,7 @@ coverage
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+/client/build/Release
 
 # Dependency directories
 node_modules
@@ -38,7 +38,7 @@ jspm_packages
 .DS_Store
 
 # Excluding build directory
-public/
+/client/public/
 
 # Excluding MongoDB ID and PW files
-/server/config.env
+/mern/server/config.env
