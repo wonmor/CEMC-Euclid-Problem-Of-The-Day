@@ -22,3 +22,5 @@ app.listen(port, () => {
 // Type 'npm start' in both the client AND server folders...
 
 // TO DO: IMPLEMENT OOP FOR EVERYTHING
+
+// HOW TO SET ID AND PW SECURELY ON HEROKU CLI: https://devcenter.heroku.com/articles/config-vars
