@@ -17,3 +17,8 @@ app.listen(port, () => {
     });
     console.log(`Server is running on port: ${port}`);
 });
+
+// TEMPLATE USED: https://github.com/mongodb-developer/mern-stack-example
+// Type 'npm start' in both the client AND server folders...
+
+// TO DO: IMPLEMENT OOP FOR EVERYTHING
