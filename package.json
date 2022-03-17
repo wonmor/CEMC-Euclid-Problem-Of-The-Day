@@ -22,5 +22,8 @@
     "bugs": {
         "url": "https://github.com/wonmor/CEMC-Euclid-Problem-Of-The-Day/issues"
     },
-    "homepage": "https://github.com/wonmor/CEMC-Euclid-Problem-Of-The-Day#readme"
+    "homepage": "https://github.com/wonmor/CEMC-Euclid-Problem-Of-The-Day#readme",
+    "dependencies": {
+        "concurrently": "^7.0.0"
+    }
 }
