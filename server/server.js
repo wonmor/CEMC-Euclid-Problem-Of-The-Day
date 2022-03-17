@@ -38,7 +38,7 @@ app.get("*", function(request, response) {
 });
 
 /*
-FOR DEVELOPMENT, ADD THESE LINES TO SCRIPTS CATEGROY IN PACKAGE.JSON:
+FOR DEVELOPMENT, ADD THESE LINES TO SCRIPTS CATEGROY IN THE CLIENT SIDE PACKAGE.JSON:
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
