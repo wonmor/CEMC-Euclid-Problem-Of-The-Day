@@ -4,6 +4,12 @@ This app was designed to accomodate students who are looking for Khan Academy st
 
 ---
 
+## Work in Progress!
+
+<img width="846" alt="Screen Shot 2022-03-17 at 4 04 28 PM" src="https://user-images.githubusercontent.com/35755386/158886308-35c55f89-a23b-41a3-b04d-b2b9fa6a268a.png">
+
+---
+
 ## Dependencies
 
 - **React** Front-End Javascript Library
