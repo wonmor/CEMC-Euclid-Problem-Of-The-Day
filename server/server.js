@@ -24,3 +24,23 @@ app.listen(port, () => {
 // TO DO: IMPLEMENT OOP FOR EVERYTHING
 
 // HOW TO SET ID AND PW SECURELY ON HEROKU CLI: https://devcenter.heroku.com/articles/config-vars
+
+// HOW TO DEPLOY MERN STACK ON HEROKU: https://dev.to/hawacodes/deploying-a-mern-app-with-heroku-3km7
+
+// Accessing the path module
+const path = require("path");
+
+// Step 1:
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// Step 2:
+app.get("*", function(request, response) {
+    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
+
+/*
+FOR DEVELOPMENT, ADD THESE LINES TO SCRIPTS CATEGROY IN PACKAGE.JSON:
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+*/
