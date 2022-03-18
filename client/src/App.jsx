@@ -29,3 +29,5 @@ const App = () => {
 };
 
 export default App;
+
+// Run npm run build to apply all the changes made on the client-end...
