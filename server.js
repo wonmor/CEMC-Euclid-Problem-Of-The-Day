@@ -44,3 +44,6 @@ FOR DEVELOPMENT, ADD THESE LINES TO SCRIPTS CATEGROY IN THE CLIENT SIDE PACKAGE.
     "test": "react-scripts test",
     "eject": "react-scripts eject"
 */
+
+// npm -g install bla bla => global installation
+// Run the program by npm start
