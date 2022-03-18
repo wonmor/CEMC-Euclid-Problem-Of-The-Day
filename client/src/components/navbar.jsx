@@ -8,12 +8,19 @@ import { NavLink } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
 
+import { Helmet } from "react-helmet";
+
+const TITLE = "CEMC Euclid: POTD";
+
 // Here, we display our Navbar
 export default function Navbar() {
   const location = useLocation();
-  
+
   return (
     <div>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <NavLink className="navbar-brand" to="/">
           <img
@@ -38,7 +45,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              {location.pathname.includes('/admin') && (
+              {location.pathname.includes("/admin") && (
                 <NavLink className="nav-link" to="/admin/create">
                   Create Record
                 </NavLink>
