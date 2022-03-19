@@ -7,8 +7,8 @@ const Record = (props) => (
     <td>{props.record.position}</td>
     <td>{props.record.level}</td>
     <td>
-      <Link className="btn btn-link" to={`/admin/edit/${props.record._id}`}>Edit</Link> |
-      <button className="btn btn-link"
+      <Link className="btn btn-outline-light" to={`/admin/edit/${props.record._id}`}>Edit</Link>&nbsp;&nbsp;
+      <button className="btn btn-outline-light"
         onClick={() => {
           props.deleteRecord(props.record._id);
         }}

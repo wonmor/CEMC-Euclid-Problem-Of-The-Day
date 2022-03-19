@@ -20,21 +20,21 @@ export default function Home() {
           CEMC nor is it hosted by the university itself!
         </h3>
       </div>
-      <ul id="horizontal-list" class="list-group list-group-horizontal-xl">
+      <ul id="horizontal-list" className="list-group list-group-horizontal-xl">
         <li>
-          <div class="container-default">
+          <div className="container-default">
             <h1>Hey, how are you feeling?</h1>
             <h3>Right now, it is {time},<br></br>and today's date is<br></br>{date}.</h3>
             <br></br>
           </div>
         </li>
         <li>
-          <div class="container-default" id="container-3">
+          <div className="container-default" id="container-3">
             <h1>Contribute to Our Project</h1>
             <h3>To access our database, click the button down below.</h3>
             <br></br>
             <button
-              class="btn btn-outline-light"
+              className="btn btn-outline-light"
               onClick={() => navigate("/admin")}
             >
               MongoDB Redirect

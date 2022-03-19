@@ -1,6 +1,15 @@
+import React from "react";
+
 export default function SourceCode() {
   return (
     <div>
+      <h1>Server.JS</h1>
+      <h3>Developed using the MERN stack</h3>
+      <a href="https://github.com/wonmor/CEMC-Euclid-Problem-Of-The-Day">
+        <button id="github-btn" className="btn btn-outline-light">
+          Check out our GitHub page!
+        </button>
+      </a>
       <iframe
         title="WebView"
         id="webview"
