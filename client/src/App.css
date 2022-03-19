@@ -47,7 +47,7 @@ html {
 }
 
 ul#horizontal-list {
-    min-width: 696px;
+    min-width: 100%;
     list-style: none;
 }
 

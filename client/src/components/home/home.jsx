@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
 
   date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+
   // This following section will display the table with the records of individuals.
   return (
     <div>
