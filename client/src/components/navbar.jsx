@@ -20,6 +20,7 @@ export default function Navbar() {
     <div>
       <Helmet>
         <title>{TITLE}</title>
+        <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16" />
       </Helmet>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <NavLink className="navbar-brand" to="/">
