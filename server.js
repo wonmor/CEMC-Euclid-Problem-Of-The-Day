@@ -1,4 +1,5 @@
 const express = require("express");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
@@ -6,6 +7,11 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(require("./routes/record"));
+app.use(
+    '/record', // you miss this part in your server code
+    createProxyMiddleware({ target: 'https://cemc-euclid-problem-of-the-day.herokuapp.com', changeOrigin: true })
+);
+app.listen(3000);
 // get driver connection
 const dbo = require("./db/conn");
 
@@ -27,7 +33,7 @@ app.listen(port, () => {
 
 // HOW TO DEPLOY MERN STACK ON HEROKU: https://dev.to/hawacodes/deploying-a-mern-app-with-heroku-3km7
 
-// HOW TO FIX 'NOT SECURE' JAVASCRIPT CONSOLE ERROR: https://stackoverflow.com/questions/62742010/async-await-fetch-not-triggered-for-http
+// HOW TO FIX 'NOT SECURE' JAVASCRIPT CONSOLE ERROR: https://stackoverflow.com/questions/59023482/mern-stack-failed-to-load-resource-neterr-connection-refused
 
 // CORS: a terminology that refers to a situation where you call the server side from the client side
 
