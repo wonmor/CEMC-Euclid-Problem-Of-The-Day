@@ -35,6 +35,8 @@ app.listen(port, () => {
 
 // HOW TO FIX 'NOT SECURE' JAVASCRIPT CONSOLE ERROR: https://stackoverflow.com/questions/59023482/mern-stack-failed-to-load-resource-neterr-connection-refused
 
+// HOW TO RESOLVE SUPER COMPLICATED PROXY SETTINGS: https://stackoverflow.com/questions/59125513/setupproxy-is-not-working-http-proxy-middleware
+
 // CORS: a terminology that refers to a situation where you call the server side from the client side
 
 // Accessing the path module
