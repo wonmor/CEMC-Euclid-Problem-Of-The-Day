@@ -142,7 +142,7 @@ export default function Edit() {
           <input
             type="submit"
             value="Update Record"
-            className="btn btn-primary"
+            className="btn btn-outline-light"
           />
         </div>
       </form>
