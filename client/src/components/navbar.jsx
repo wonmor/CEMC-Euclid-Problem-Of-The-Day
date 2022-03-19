@@ -22,7 +22,7 @@ export default function Navbar() {
         <title>{TITLE}</title>
         <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16" />
       </Helmet>
-      <nav className="navbar navbar-expand-xl navbar-dark bg-dark hover-shadow">
+      <nav id="navbar-main" className="navbar navbar-expand-xl navbar-dark bg-dark hover-shadow">
         <NavLink id="navbar-brand" className="navbar-brand" to="/">
           <img
             style={{ width: 70 + "%" }}
@@ -45,14 +45,14 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               {!location.pathname.includes("/admin") && (
-                <NavLink id="create-record" className="nav-link" to="/504">
+                <NavLink id="create-record" className="nav-link" to="/">
                   About
                 </NavLink>
               )}
             </li>
             <li className="nav-item">
               {!location.pathname.includes("/admin") && (
-                <NavLink id="create-record" className="nav-link" to="/404">
+                <NavLink id="create-record" className="nav-link" to="/source-code">
                   Source Code
                 </NavLink>
               )}

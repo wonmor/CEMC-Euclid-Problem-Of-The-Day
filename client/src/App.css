@@ -5,6 +5,8 @@ html {
     font-family: 'Rubik', sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    background-color: rgb(30, 33, 36);
+    color: white;
 }
 
 #navbar-brand {
@@ -17,4 +19,34 @@ html {
 
 #create-record {
     color: white;
+}
+
+.container-default {
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 30px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.11);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 25px;
+}
+
+#container-3 {
+    background: black;
+}
+
+ul#horizontal-list {
+    min-width: 696px;
+    list-style: none;
+}
+
+ul#horizontal-list li {
+    display: inline;
+}
+
+#webview {
+    background: #FFFFFF;
+    border-radius: 25px;
 }

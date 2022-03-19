@@ -106,7 +106,7 @@ export default function Create() {
           <input
             type="submit"
             value="Create person"
-            className="btn btn-primary"
+            className="btn btn-outline-light"
           />
         </div>
       </form>

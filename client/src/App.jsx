@@ -10,6 +10,7 @@ import RecordList from "./components/admin/recordList";
 import Edit from "./components/admin/edit";
 import Create from "./components/admin/create";
 
+import SourceCode from "./components/home/sourceCode"
 import Home from "./components/home/home";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <div style={{ margin: 20 }}>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/source-code" element={<SourceCode />} />
         <Route exact path="/admin" element={<RecordList />} />
         <Route path="/admin/edit/:id" element={<Edit />} />
         <Route path="/admin/create" element={<Create />} />
