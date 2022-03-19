@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div>
       <div id="container-1">
-        <h1>Welcome to CEMC Euclid Problem of the Day!</h1>
+        <h1>Welcome to CEMC Euclid: Problem of the Day!</h1>
         <h3>
           This is a platform developed to help students with different materials
           for University of Waterloo's own math competiton for high school
