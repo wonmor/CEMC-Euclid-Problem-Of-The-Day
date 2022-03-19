@@ -6,7 +6,7 @@ This app was designed to accomodate students who are looking for Khan Academy st
 
 ---
 
-## Alpha Build 0.1
+## Alpha Build 0.3
 
 Development is still in progress and will be done momentarily.
 
