@@ -64,3 +64,7 @@ ul#horizontal-list li {
     background: rgb(255, 255, 255);
     border-radius: 10px;
 }
+
+#button-generic {
+    margin: 3px;
+}
