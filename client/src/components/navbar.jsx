@@ -22,33 +22,38 @@ export default function Navbar() {
         <title>{TITLE}</title>
         <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16" />
       </Helmet>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <NavLink className="navbar-brand" to="/">
+      <nav className="navbar navbar-expand-xl navbar-dark bg-dark hover-shadow">
+        <NavLink id="navbar-brand" className="navbar-brand" to="/">
           <img
             style={{ width: 70 + "%" }}
             alt="Logo"
             src="https://uwaterloo.ca/profiles/uw_base_profile/modules/features/uw_nav_global_header/images/university-of-waterloo-logo.png"
           ></img>
         </NavLink>
-        <button
-          className="navbar-toggler"
-          style={{ display: "none" }}
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
+        <div id="navbarSupportedContent">
+          <ul className="nav nav-pills" id="navbarItems">
             <li className="nav-item">
               {location.pathname.includes("/admin") && (
-                <NavLink className="nav-link" to="/admin/create">
+                <NavLink
+                  id="create-record"
+                  className="nav-link"
+                  to="/admin/create"
+                >
                   Create Record
+                </NavLink>
+              )}
+            </li>
+            <li className="nav-item">
+              {!location.pathname.includes("/admin") && (
+                <NavLink id="create-record" className="nav-link" to="/504">
+                  About
+                </NavLink>
+              )}
+            </li>
+            <li className="nav-item">
+              {!location.pathname.includes("/admin") && (
+                <NavLink id="create-record" className="nav-link" to="/404">
+                  Source Code
                 </NavLink>
               )}
             </li>
