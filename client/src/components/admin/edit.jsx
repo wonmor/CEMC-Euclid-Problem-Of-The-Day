@@ -15,7 +15,7 @@ export default function Edit() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5000/record/${params.id.toString()}`
+        `http://localhost:5000/record/${params.id.toString()}` // This is an example of CORS
       );
 
       if (!response.ok) {

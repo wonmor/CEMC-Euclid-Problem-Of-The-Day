@@ -27,6 +27,10 @@ app.listen(port, () => {
 
 // HOW TO DEPLOY MERN STACK ON HEROKU: https://dev.to/hawacodes/deploying-a-mern-app-with-heroku-3km7
 
+// HOW TO FIX 'NOT SECURE' JAVASCRIPT CONSOLE ERROR: https://stackoverflow.com/questions/62742010/async-await-fetch-not-triggered-for-http
+
+// CORS: a terminology that refers to a situation where you call the server side from the client side
+
 // Accessing the path module
 const path = require("path");
 
