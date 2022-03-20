@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 
 // We import all the components we need in our app
 import Navbar from "./components/navbar";
+import Footer from "./components/footer"
 import RecordList from "./components/admin/recordList";
 import Edit from "./components/admin/edit";
 import Create from "./components/admin/create";
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ margin: 20 }}>
+      <div style={{ margin: 20, 'min-height': '100vh'}}>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/source-code" element={<SourceCode />} />
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/admin/create" element={<Create />} />
       </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,10 +1,19 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
+// import jokes from './humour.json'
+
+// WHY 'NPM RUN BUILD?'
+// LINK: https://stackoverflow.com/questions/43664200/what-is-the-difference-between-npm-install-and-npm-run-build
+
+// function GenerateJoke () {
+//   const parsed_jokes = JSON.parse(jokes);
+// }
+
 export default function Home() {
   const navigate = useNavigate();
-  // eslint-disable-next-line no-mixed-operators
   const dateTimeRef = React.useRef(null);
+  // eslint-disable-next-line no-mixed-operators
 
   React.useEffect(() => {
     const secondsTimer = setInterval(() => {
@@ -33,6 +42,11 @@ export default function Home() {
             <h1>Hey, how are you feeling?</h1>
             <h3>Just in case you're wondering, it is <span ref={dateTimeRef}>[Retrieving...]</span> in your timezone. Hope you are enjoying your day!</h3>
             <br></br>
+            <button
+              className="btn btn-outline-light"
+            >
+              I'm Feeling Lucky
+            </button>
           </div>
         </li>
         <li>
