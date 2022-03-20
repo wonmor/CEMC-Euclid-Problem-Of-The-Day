@@ -31,3 +31,14 @@ Development is still in progress and will be done momentarily.
 - **JavaScript** (Node, Express, React)
 - The **Go** Programming Language
 - **HTML** and **CSS** for obvious reasons
+
+---
+
+## How to Run
+
+Don't worry, it's not going to bite you...
+
+1. ```npm install```
+3. ```cd client && npm install```
+4. ```cd ../ && npm start``` (Back in the ```root``` folder)
+5. ```cd client && npm start``` (Open a seperate terminal and run the **React** app)
