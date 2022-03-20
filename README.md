@@ -26,7 +26,7 @@ Development is still in progress and will be done momentarily.
 
 ---
 
-## Language Used
+## Languages Used
 
 - **JavaScript** (Node, Express, React)
 - The **Go** Programming Language
