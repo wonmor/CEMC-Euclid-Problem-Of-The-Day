@@ -46,7 +46,7 @@ export default function Navbar() {
             <li className="nav-item">
               {!location.pathname.includes("/admin") && (
                 <NavLink id="create-record" className="nav-link" to="/">
-                  About
+                  Home
                 </NavLink>
               )}
             </li>

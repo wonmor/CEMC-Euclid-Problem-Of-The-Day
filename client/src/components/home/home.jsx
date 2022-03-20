@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // import jokes from './humour.json'
@@ -35,22 +35,31 @@ export default function Home() {
           students. Please note that this website does not represent Waterloo's
           CEMC nor is it hosted by the university itself!
         </h3>
+        <a href="#footer">
+          <button id="scroll-down" className="btn btn-outline-light">
+            Today's Practice Question
+          </button>
+        </a>
       </div>
       <ul id="horizontal-list" className="list-group list-group-horizontal-xl">
         <li>
           <div className="container-default">
             <h1>Hey, how are you feeling?</h1>
-            <h3>Just in case you're wondering, it is <span ref={dateTimeRef}>[Retrieving...]</span> in your timezone. Hope you are enjoying your day!</h3>
+            <h3>
+              Just in case you're wondering, it is{" "}
+              <span ref={dateTimeRef}>[Retrieving...]</span> in your timezone.
+              Hope you are enjoying your day!
+            </h3>
             <br></br>
-            <button
-              className="btn btn-outline-light"
-            >
-              I'm Feeling Lucky
-            </button>
+            <a href="https://www.youtube.com/watch?v=ZExFN4NchiU">
+              <button className="btn btn-outline-light">
+                I'm Feeling Lucky
+              </button>
+            </a>
           </div>
         </li>
         <li>
-          <div className="container-default" id="container-3">
+          <div className="container-default" id="container-2">
             <h1>Contribute to Our Project</h1>
             <h3>To access our database, click the button down below.</h3>
             <br></br>
@@ -63,6 +72,7 @@ export default function Home() {
           </div>
         </li>
       </ul>
+      <div id="practice-question"></div>
     </div>
   );
 }
