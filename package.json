@@ -32,6 +32,9 @@
         "http-proxy-middleware": "^2.0.4",
         "mongodb": "^3.6.6",
         "mongoose": "^5.12.4",
+        "node-ensure": "^0.0.0",
+        "pdf-lib": "^1.17.1",
+        "pdfreader": "^1.2.14",
         "react-helmet": "^6.1.0"
     }
 }

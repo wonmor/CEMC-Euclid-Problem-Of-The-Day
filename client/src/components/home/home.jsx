@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
+  // eslint-disable-next-line no-mixed-operators
+  const dateTimeRef = React.useRef(null);
 
-  var today = new Date(),
-
-  date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-  let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+  React.useEffect(() => {
+    const secondsTimer = setInterval(() => {
+      if (dateTimeRef.current) {
+        dateTimeRef.current.innerText = new Date().toLocaleString();
+      }
+    }, 1000);
+    return () => clearInterval(secondsTimer);
+  }, [dateTimeRef]);
 
   // This following section will display the table with the records of individuals.
   return (
@@ -16,7 +22,7 @@ export default function Home() {
         <h1>Welcome to CEMC Euclid: Problem of the Day!</h1>
         <h3>
           This is a platform developed to help students with different materials
-          for University of Waterloo's own math competiton for high school
+          for University of Waterloo's own math competition for high school
           students. Please note that this website does not represent Waterloo's
           CEMC nor is it hosted by the university itself!
         </h3>
@@ -25,7 +31,7 @@ export default function Home() {
         <li>
           <div className="container-default">
             <h1>Hey, how are you feeling?</h1>
-            <h3>Right now, it is {time},<br></br>and today's date is<br></br>{date}.</h3>
+            <h3>Just in case you're wondering, it is <span ref={dateTimeRef}>[Retrieving...]</span> in your timezone. Hope you are enjoying your day!</h3>
             <br></br>
           </div>
         </li>
