@@ -23,3 +23,10 @@ Development is still in progress and will be done momentarily.
 - **Node.js** Back-End Javascript Runtime Environment
 - **Express.js** Back-End Web Application Framework
 - **MongoDB** Document-Oriented Database Program
+
+---
+
+## Language Used
+
+- **Javascript** (NodeJS, React)
+- The **Go** Programming Language
