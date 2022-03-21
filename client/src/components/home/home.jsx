@@ -16,7 +16,7 @@ export default function Home() {
   const dateTimeRef = React.useRef(null);
   const [showResults, setShowResults] = React.useState(false);
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     // initialize
     const cfd = new CanvasFreeDrawing({
       elementId: "cfd",
