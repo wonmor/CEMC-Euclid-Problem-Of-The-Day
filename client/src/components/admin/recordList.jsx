@@ -68,7 +68,8 @@ export default function RecordList() {
   // This following section will display the table with the records of individuals.
   return (
     <div>
-      <h3>Record List</h3>
+      <h1><b>Record List</b></h1>
+      <h3>Please leave your name after making a Git commit.</h3>
       <table className="table table-striped" style={{ marginTop: 20, color: "white" }}>
         <thead>
           <tr>
