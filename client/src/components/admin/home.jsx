@@ -17,7 +17,7 @@ export default function AdminHome() {
   return (
     <div>
       <div id="container-1">
-        <h1>This is admin home.</h1>
+        <h1><b>This is admin home.</b></h1>
         <h3>Press the button below to access the database.</h3>
         <br></br>
         <button
