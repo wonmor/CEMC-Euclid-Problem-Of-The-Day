@@ -1,3 +1,5 @@
+// JSCONFIG.JSON DOCS: https://code.visualstudio.com/docs/languages/jsconfig#_what-is-jsconfigjson
+
 const express = require("express");
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
@@ -8,10 +10,19 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(require("./routes/record"));
+// app.use(require("./routes/manage-pdf"));
+
+// Set proxy address; when there're certain HTTP calls targetting the server side with addresses that start with localhost, replace them with the heroku URL
 app.use(
-    '/record', // you miss this part in your server code
+    '/record',
     createProxyMiddleware({ target: 'https://cemc-euclid-problem-of-the-day.herokuapp.com', changeOrigin: true })
 );
+
+// app.use(
+//     '/manage-pdf',
+//     createProxyMiddleware({ target: 'https://cemc-euclid-problem-of-the-day.herokuapp.com', changeOrigin: true })
+// );
+
 app.listen(3000);
 // get driver connection
 const dbo = require("./db/conn");

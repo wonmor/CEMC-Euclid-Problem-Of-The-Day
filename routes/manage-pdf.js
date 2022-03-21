@@ -1,6 +1,15 @@
+const express = require("express");
+
+// recordRoutes is an instance of the express router.
+// We use it to define our routes.
+// The router will be added as a middleware and will take control of requests starting with path /manage-pdf
+const recordRoutes = express.Router();
+
 // USING THE TUTORIAL: https://www.npmjs.com/package/pdfreader
 
 // USE MULTER FOR FILE UPLOAD FUNCTIONALITY: https://arosh-segar.medium.com/how-to-upload-images-using-multer-in-the-mern-stack-1c6bf691947e
+
+// ALSO USING SCISSORS MODULE: https://www.npmjs.com/package/scissors
 
 /*
 ORDER OF OPERATIONS FOR PDF SLICING
@@ -15,3 +24,14 @@ LET THE USER UPLOAD THEIR OWN PDF FILE. THE FILE UPLOAD SOLUTION WILL BE MULTER.
 */
 
 var pdfreader = require("pdfreader");
+
+var scissors = require('scissors');
+
+var question_sheet = scissors('../parsepdf/EuclidCombinedContest.pdf');
+
+var answer_sheet = scissors('../parsepdf/EuclidCombinedSolutions.pdf');
+
+recordRoutes.route("/manage-pdf").get(function(req, res) {
+    
+
+});

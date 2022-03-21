@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/wonmor/CEMC-Euclid-Problem-Of-The-Day#readme",
     "dependencies": {
+        "canvas-free-drawing": "^2.1.0",
         "concurrently": "^7.0.0",
         "cors": "^2.8.5",
         "dotenv": "^8.2.0",
@@ -35,6 +36,8 @@
         "node-ensure": "^0.0.0",
         "pdf-lib": "^1.17.1",
         "pdfreader": "^1.2.14",
-        "react-helmet": "^6.1.0"
+        "react-helmet": "^6.1.0",
+        "react-inline-script": "^1.2.0",
+        "scissors": "^0.3.0"
     }
 }

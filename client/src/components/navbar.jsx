@@ -22,7 +22,10 @@ export default function Navbar() {
         <title>{TITLE}</title>
         <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16" />
       </Helmet>
-      <nav id="navbar-main" className="navbar navbar-expand-xl navbar-dark bg-dark hover-shadow">
+      <nav
+        id="navbar-main"
+        className="navbar navbar-expand-xl navbar-dark bg-dark hover-shadow"
+      >
         <NavLink id="navbar-brand" className="navbar-brand" to="/">
           <img
             style={{ width: 70 + "%" }}
@@ -33,15 +36,18 @@ export default function Navbar() {
         <div id="navbarSupportedContent">
           <ul className="nav nav-pills" id="navbarItems">
             <li className="nav-item">
-              {location.pathname.includes("/admin") && (
-                <NavLink
-                  id="create-record"
-                  className="nav-link"
-                  to="/admin/create"
-                >
-                  Create Record
-                </NavLink>
-              )}
+              {location.pathname.includes("/admin") &&
+                (location.pathname.includes("/create") ||
+                  location.pathname.includes("/edit") ||
+                  location.pathname.includes("/record-list")) && (
+                  <NavLink
+                    id="create-record"
+                    className="nav-link"
+                    to="/admin/create"
+                  >
+                    Create Record
+                  </NavLink>
+                )}
             </li>
             <li className="nav-item">
               {!location.pathname.includes("/admin") && (
@@ -52,7 +58,11 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               {!location.pathname.includes("/admin") && (
-                <NavLink id="create-record" className="nav-link" to="/source-code">
+                <NavLink
+                  id="create-record"
+                  className="nav-link"
+                  to="/source-code"
+                >
                   Source Code
                 </NavLink>
               )}

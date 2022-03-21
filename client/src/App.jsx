@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 // We import all the components we need in our app
 import Navbar from "./components/navbar";
 import Footer from "./components/footer"
+import AdminHome from "./components/admin/home";
 import RecordList from "./components/admin/recordList";
 import Edit from "./components/admin/edit";
 import Create from "./components/admin/create";
@@ -22,7 +23,8 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/source-code" element={<SourceCode />} />
-        <Route exact path="/admin" element={<RecordList />} />
+        <Route exact path ="/admin" element={<AdminHome />} />
+        <Route path="/admin/record-list" element={<RecordList />} />
         <Route path="/admin/edit/:id" element={<Edit />} />
         <Route path="/admin/create" element={<Create />} />
       </Routes>

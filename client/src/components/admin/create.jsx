@@ -36,7 +36,7 @@ export default function Create() {
     });
 
     setForm({ name: "", position: "", level: "" });
-    navigate("/admin");
+    navigate("/admin/record-list");
   }
 
   // This following section will display the form that takes the input from the user.
