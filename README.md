@@ -12,7 +12,7 @@ Development is still in progress and will be done momentarily.
 
 <img width="1699" alt="Screen Shot 2022-03-20 at 2 34 18 AM" src="https://user-images.githubusercontent.com/35755386/159151169-c05979fc-0243-448d-8fc6-82a51168a12b.png">
 
-<img width="1365" alt="Screen Shot 2022-03-19 at 4 09 21 PM" src="https://user-images.githubusercontent.com/35755386/159136889-741f841c-41c3-4196-8dc2-a69b0a72062a.png">
+<img width="578" alt="Screen Shot 2022-03-21 at 12 13 51 AM" src="https://user-images.githubusercontent.com/35755386/159204564-7f7dceb1-676a-4527-9358-29241317632e.png">
 
 ---
 
