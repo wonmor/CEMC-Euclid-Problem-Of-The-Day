@@ -10,7 +10,7 @@ This app was designed to accomodate students who are looking for Khan Academy st
 
 Development is still in progress and will be done momentarily.
 
-<img width="1371" alt="Screen Shot 2022-03-19 at 4 08 54 PM" src="https://user-images.githubusercontent.com/35755386/159136883-d50aa0e2-982c-4441-9c0e-8e6321ec7979.png">
+<img width="1699" alt="Screen Shot 2022-03-20 at 2 34 18 AM" src="https://user-images.githubusercontent.com/35755386/159151169-c05979fc-0243-448d-8fc6-82a51168a12b.png">
 
 <img width="1365" alt="Screen Shot 2022-03-19 at 4 09 21 PM" src="https://user-images.githubusercontent.com/35755386/159136889-741f841c-41c3-4196-8dc2-a69b0a72062a.png">
 
@@ -23,3 +23,15 @@ Development is still in progress and will be done momentarily.
 - **Node.js** Back-End Javascript Runtime Environment
 - **Express.js** Back-End Web Application Framework
 - **MongoDB** Document-Oriented Database Program
+
+---
+
+
+## How to Run
+
+Don't worry, it's not going to bite you...
+
+1. ```npm install```
+3. ```cd client && npm install```
+4. ```cd ../ && npm start``` (Back in the ```root``` folder)
+5. ```cd client && npm start``` (Open a seperate terminal and run the **React** app)
