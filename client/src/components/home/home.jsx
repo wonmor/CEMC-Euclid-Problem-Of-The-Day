@@ -14,6 +14,7 @@ import CanvasFreeDrawing from "canvas-free-drawing";
 export default function Home() {
   const navigate = useNavigate();
   const dateTimeRef = React.useRef(null);
+  const [showResults, setShowResults] = React.useState(false);
 
   React.useEffect(() => {
     // initialize
@@ -44,7 +45,9 @@ export default function Home() {
   return (
     <div>
       <div className="container-1">
-        <h1><b>Welcome to CEMC Euclid: Problem of the Day!</b></h1>
+        <h1>
+          <b>Welcome to CEMC Euclid: Problem of the Day!</b>
+        </h1>
         <h3>
           This is a platform developed to help students with different materials
           for University of Waterloo's own math competition for high school
@@ -91,20 +94,52 @@ export default function Home() {
         </li>
       </ul>
       <div className="container-1" id="practice-question">
-        <h1><b>Problem of the Day</b></h1>
+        <h1>
+          <b>Problem of the Day</b>
+        </h1>
         <h3>
           Development is currently in the <b>work in progress</b> stage.
         </h3>
         <br></br>
-        <div class="grid-container" id="question-drawing-container">
-          <div class="grid-item">
+        <div className="grid-container" id="question-drawing-container">
+          <div className="grid-item">
             <img src="https://i.stack.imgur.com/TjbDN.png" alt="question"></img>
           </div>
-          <div class="grid-item"><h3><i>As Teachers Around the World Like to Say:<br></br><b>Please Show All Your Work!</b></i></h3></div>
-          <div class="grid-item"><canvas id="cfd"></canvas></div>
-          <div class="grid-item"><span>Thank you <a href="https://github.com/federico-moretti/canvas-free-drawing">canvas-free-drawing</a> for providing the <b>drawing board API</b>!</span></div>
+          <div className="grid-item">
+            <h3>
+              <i>
+                As Teachers Around the World Like to Say:<br></br>
+                <b>Please Show All Your Work!</b>
+              </i>
+            </h3>
+          </div>
+          <div className="grid-item">
+            <canvas id="cfd"></canvas>
+          </div>
+          <div className="grid-item">
+            <span>
+              Thank you{" "}
+              <a href="https://github.com/federico-moretti/canvas-free-drawing">
+                canvas-free-drawing
+              </a>{" "}
+              for providing the <b>drawing board API</b>!
+            </span>
+          </div>
+          <div className="grid-item">
+            <a href="https://math.stackexchange.com/questions/2632636/geometric-proof-in-waterloo-euclid-contest">
+              <button
+                className="btn btn-outline-light"
+                // onClick={() => setShowResults(true)}
+              >
+                Check the Answers
+              </button>
+            </a>
+          </div>
+          <div className="grid=item">{showResults ? <Results /> : null}</div>
         </div>
       </div>
     </div>
   );
 }
+
+const Results = () => <div id="results"></div>;
