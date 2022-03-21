@@ -26,12 +26,6 @@ Development is still in progress and will be done momentarily.
 
 ---
 
-## Languages Used
-
-- **JavaScript** (Node, Express, React)
-- **HTML** and **CSS** for obvious reasons
-
----
 
 ## How to Run
 
