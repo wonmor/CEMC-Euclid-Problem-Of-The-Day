@@ -11,6 +11,8 @@ import CanvasFreeDrawing from "canvas-free-drawing";
 //   const parsed_jokes = JSON.parse(jokes);
 // }
 
+// Use the module https://www.npmjs.com/package/react-pdf to display the PDF on React
+
 export default function Home() {
   const navigate = useNavigate();
   const dateTimeRef = React.useRef(null);
