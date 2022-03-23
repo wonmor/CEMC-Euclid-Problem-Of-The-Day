@@ -19,7 +19,6 @@ class ManipulatePDF():
     def get_coordinates(self):
         dev = PDFPageAggregator(self.manager, laparams=self.laparams)
         interpreter = PDFPageInterpreter(self.manager, dev)
-        pages = PDFPage.get_pages(self.fp)
 
         for page in self.pages:
             print('--- Processing ---')
@@ -56,6 +55,8 @@ def get_questions():
     questions.get_coordinates()
 
     quest_locations = questions.locations
+
+    print("quest_locations: " + quest_locations)
 
 
 def get_answers():
