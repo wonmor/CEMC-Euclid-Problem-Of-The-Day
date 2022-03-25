@@ -45,3 +45,6 @@ config.env
 
 # Excluding the VENV
 venv
+
+# Excluding the pycache
+pycache

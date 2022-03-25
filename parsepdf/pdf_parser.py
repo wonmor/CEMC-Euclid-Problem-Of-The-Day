@@ -14,7 +14,7 @@ class PDFParser(object):
     def __init__(self, json_file, fp):
         print("__INIT__ RUNNING")
         self.json_file = json_file
-        self.fp = fp
+        self.fp = open(f'{fp}', 'rb')
         self.locations = {}
 
     def get_coordinates(self):
@@ -34,7 +34,7 @@ class PDFParser(object):
                         # If the char is a line-break or an empty space, the word is complete
                             if isinstance(char, LTAnno) or char.get_text() == ' ':
                                 if x != -1:
-                                    print('At %r is text: %s' % ((x, y), text))
+                                    print('PDF PARSING IN PROGRESS: At %r is text: %s' % ((x, y), text))
                                 x, y, text = -1, -1, ''     
                             elif isinstance(char, LTChar):
                                 text += char.get_text()
@@ -48,4 +48,4 @@ class PDFParser(object):
         json_string = json.dumps(self.locations)
 
         with open(f'{self.json_file}', 'w') as f:
-            f.dump(json_string, f)
+            json.dump(json_string, f)
