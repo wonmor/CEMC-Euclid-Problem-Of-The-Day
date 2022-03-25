@@ -47,5 +47,5 @@ config.env
 venv
 
 # Excluding the pycache
- __pycache__/
- *.pyc
+__pycache__/
+*.pyc
