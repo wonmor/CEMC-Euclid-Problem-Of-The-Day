@@ -12,11 +12,13 @@ def parse_pdf(command):
     match command:
         case Command.QUESTIONS:
             print("Parsing the questions!")
-            m_pdf = pdf_parser.PDFParser('questions_coordinates', 'parsepdf/EuclidCombinedContest.pdf')
+            m_pdf = pdf_parser.PDFParser('parsepdf/questions_coordinates.json', 'parsepdf/EuclidCombinedContest.pdf')
             m_pdf.get_coordinates()
 
         case Command.SOLUTIONS:
-            m_pdf = pdf_parser.PDFParser('answers_coordinates', 'parsepdf/EuclidCombinedSolutions.pdf')
+            m_pdf = pdf_parser.PDFParser('parsepdf/answers_coordinates.json', 'parsepdf/EuclidCombinedSolutions.pdf')
             m_pdf.get_coordinates()
 
+# Parse the questions and solutions file
 parse_pdf(Command.QUESTIONS)
+parse_pdf(Command.SOLUTIONS)

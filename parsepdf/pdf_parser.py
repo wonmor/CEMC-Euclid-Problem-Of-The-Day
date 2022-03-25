@@ -23,7 +23,7 @@ class PDFParser(object):
         dev = PDFPageAggregator(manager, laparams=laparams)
         interpreter = PDFPageInterpreter(manager, dev)
         pages = PDFPage.get_pages(self.fp)
-        for page in pages: # Code stops here... Attribute Error: Str has no 'seek' attribute
+        for page in pages:  # Code stops here... Attribute Error: Str has no 'seek' attribute
             interpreter.process_page(page)
             layout = dev.get_result()
             x, y, text = -1, -1, ''
@@ -31,21 +31,27 @@ class PDFParser(object):
                 if isinstance(textbox, LTText):
                     for line in textbox:
                         for char in line:
-                        # If the char is a line-break or an empty space, the word is complete
+                            # If the char is a line-break or an empty space, the word is complete
                             if isinstance(char, LTAnno) or char.get_text() == ' ':
                                 if x != -1:
-                                    print('PDF PARSING IN PROGRESS: At %r is text: %s' % ((x, y), text))
-                                x, y, text = -1, -1, ''     
+                                    print('PDF PARSING IN PROGRESS: At %r is text: %s' % (
+                                        (x, y), text))
+                                    self.locations[f'{text}'] = (x, y)
+                                x, y, text = -1, -1, ''
                             elif isinstance(char, LTChar):
                                 text += char.get_text()
                                 if x == -1:
-                                    x, y, = char.bbox[0], char.bbox[3]    
+                                    x, y, = char.bbox[0], char.bbox[3]
             # If the last symbol in the PDF was neither an empty space nor a LTAnno, print the word here
             if x != -1:
-                print('At %r is text: %s' % ((x, y), text))
-                self.locations[f'{text}'] = (x,y)
-
-        json_string = json.dumps(self.locations)
+                print('PDF PARSING IN PROGRESS: At %r is text: %s' %
+                      ((x, y), text))
+                self.locations[f'{text}'] = (x, y)
 
         with open(f'{self.json_file}', 'w') as f:
-            json.dump(json_string, f)
+            print('JSON file successfully opened!')
+            f.write(json.dumps(self.locations, indent=4, sort_keys=True))
+            print('JSON file successfully written!')
+            f.close()
+
+        self.fp.close()
