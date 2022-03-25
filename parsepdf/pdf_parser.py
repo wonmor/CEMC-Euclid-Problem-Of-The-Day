@@ -1,31 +1,32 @@
-from pdfminer.layout import LAParams, LTText, LTChar, LTAnno
+from pdfminer.layout import LAParams, LTTextBox, LTText, LTChar, LTAnno
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfinterp import PDFResourceManager
 from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
 
+import json
+
 # Tutorial used: https://stackoverflow.com/questions/22898145/how-to-extract-text-and-text-coordinates-from-a-pdf-file
 # Another tutorial: https://stackoverflow.com/questions/59182694/pdfminer-extraction-for-single-words-lttext-lttextbox
 
-class ManipulatePDF():
-    def __init__(self, fp, pages):
-        self.fp = fp
-        self.pages = pages
-        self.locations = []
 
-        self.manager = PDFResourceManager()
-        self.laparams = LAParams()
+class PDFParser(object):
+    def __init__(self, json_file, fp):
+        print("__INIT__ RUNNING")
+        self.json_file = json_file
+        self.fp = fp
+        self.locations = {}
 
     def get_coordinates(self):
-        dev = PDFPageAggregator(self.manager, laparams=self.laparams)
-        interpreter = PDFPageInterpreter(self.manager, dev)
-
-        for page in self.pages:
-            print('--- Processing ---')
+        manager = PDFResourceManager()
+        laparams = LAParams()
+        dev = PDFPageAggregator(manager, laparams=laparams)
+        interpreter = PDFPageInterpreter(manager, dev)
+        pages = PDFPage.get_pages(self.fp)
+        for page in pages: # Code stops here... Attribute Error: Str has no 'seek' attribute
             interpreter.process_page(page)
             layout = dev.get_result()
             x, y, text = -1, -1, ''
-
             for textbox in layout:
                 if isinstance(textbox, LTText):
                     for line in textbox:
@@ -34,39 +35,17 @@ class ManipulatePDF():
                             if isinstance(char, LTAnno) or char.get_text() == ' ':
                                 if x != -1:
                                     print('At %r is text: %s' % ((x, y), text))
-                                    x, y, text = -1, -1, ''     
+                                x, y, text = -1, -1, ''     
                             elif isinstance(char, LTChar):
                                 text += char.get_text()
                                 if x == -1:
                                     x, y, = char.bbox[0], char.bbox[3]    
             # If the last symbol in the PDF was neither an empty space nor a LTAnno, print the word here
             if x != -1:
-                self.locations.append([x, y, text])
+                print('At %r is text: %s' % ((x, y), text))
+                self.locations[f'{text}'] = (x,y)
 
- 
-def get_questions():
-    # Read the question sheet
-    global quest_locations
+        json_string = json.dumps(self.locations)
 
-    fp = open('EuclidCombinedContest.pdf', 'rb')
-    pages = PDFPage.get_pages(fp)
-
-    questions = ManipulatePDF(fp, pages)
-    questions.get_coordinates()
-
-    quest_locations = questions.locations
-
-    print("quest_locations: " + quest_locations)
-
-
-def get_answers():
-    # Read the answer sheet
-    global solute_locations
-
-    fp = open('EuclidCombinedSolutions.pdf', 'rb')
-    pages = PDFPage.get_pages(fp)
-
-    solutions = ManipulatePDF(fp, pages)
-    solutions.get_coordinates()
-
-    solute_locations = solutions.locations
+        with open(f'{self.json_file}', 'w') as f:
+            f.dump(json_string, f)
