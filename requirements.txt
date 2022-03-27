@@ -1,5 +1,7 @@
 autopep8==1.6.0
+numpy==1.22.3
 pdfminer==20191125
 pycodestyle==2.8.0
 pycryptodome==3.14.1
+PyPDF2==1.26.0
 toml==0.10.2
