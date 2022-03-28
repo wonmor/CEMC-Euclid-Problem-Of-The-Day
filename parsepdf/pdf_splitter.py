@@ -55,7 +55,7 @@ class PDFSplitter(object):
 
         # for i in range(1, len(self.base_coordinates)):
             # Shift the y-coordinate up a little for cropping purposes
-            # self.transformed_coordinates[i] = self.base_coordinates[i] + 
+            # self.trandsformed_coordinates[i] = self.base_coordinates[i] + 
 
 
 

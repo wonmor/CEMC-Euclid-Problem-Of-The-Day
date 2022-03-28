@@ -11,48 +11,49 @@ class Command(Enum):
 # PDF COORDINATE SYSTEM: https://www.pdfscripting.com/public/PDF-Page-Coordinates.cfm
 
 
+state_dict = {
+    'QUESTIONS': Command.QUESTIONS,
+    'SOLUTIONS': Command.SOLUTIONS,
+    'PARSE': pdf_parser.PDFParser,
+    'SPLIT': pdf_splitter.PDFSplitter
+}
+
+
 class PDFHandler(object):
 
-    def __init__(self, command):
-        # Parse the questions and the solutions file
-        self.parse_pdf(command)
-        self.split_pdf(command)
+    def __init__(self, target):
+        # When class is instantiated, immediately start parsing the target file...
+        self.target = target
+        self.manpulate_pdf(self.target, 'PARSE')
 
-    def parse_pdf(self, command):
+    def split_pdf(self):
+        self.manipulate_pdf(self.target, 'SPLIT')
+
+    @staticmethod
+    def manipulate_pdf(target, operation):
         print('PDF parsing sesquence started!')
 
-        # Supports string parameters as well
-        command = Command.QUESTIONS if command == 'QUESTIONS' else Command.SOLUTIONS if command == 'SOLUTIONS' else None
+        # Define which file to execute
+        command = state_dict[target]
+
+        # Define which function to execute
+        func = state_dict[operation]
 
         match command:
             case Command.QUESTIONS:
-                print("Parsing the questions!")
-                m_pdf = pdf_parser.PDFParser(
+                m_pdf = func(
                     'parsepdf/questions_coordinates.json', 'parsepdf/EuclidCombinedContest.pdf')
                 m_pdf.get_coordinates()
 
             case Command.SOLUTIONS:
-                m_pdf = pdf_parser.PDFParser(
+                m_pdf = func(
                     'parsepdf/answers_coordinates.json', 'parsepdf/EuclidCombinedSolutions.pdf')
                 m_pdf.get_coordinates()
 
-    def split_pdf(self, command):
-        print('PDF splitting sequence started!')
-
-        # Supports string parameters as well
-        command = Command.QUESTIONS if command == 'QUESTIONS' else Command.SOLUTIONS if command == 'SOLUTIONS' else None
-
-        match command:
-            case Command.QUESTIONS:
-                m_pdf = pdf_splitter.PDFSplitter(
-                    'parsepdf/questions_coordinates.json', 'parsepdf/EuclidCombinedContest.pdf')
-                m_pdf.start_splitting()
-
-            case Command.SOLUTIONS:
-                m_pdf = pdf_splitter.PDFSplitter(
-                    'parsepdf/answers_coordinates.json', 'parsepdf/EuclidCombinedSolutions.pdf')
-                m_pdf.start_splitting()
 
 # Parse and split both the questions and the solutions sheets
 questions_sheet = PDFHandler('QUESTIONS')
+questions_sheet.split_pdf()
+
 solutions_sheet = PDFHandler('SOLUTIONS')
+solutions_sheet.split_pdf()
