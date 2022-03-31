@@ -21,6 +21,7 @@ class PDFParser(object):
         self.json_file = json_file
         self.fp = open(f'{fp}', 'rb')
         self.locations = defaultdict(list)
+        self.get_coordinates()
 
     def get_coordinates(self):
         manager = PDFResourceManager()

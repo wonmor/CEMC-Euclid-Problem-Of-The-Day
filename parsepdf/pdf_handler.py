@@ -24,15 +24,10 @@ class PDFHandler(object):
     def __init__(self, target):
         # When class is instantiated, immediately start parsing the target file...
         self.target = target
-        self.manpulate_pdf(self.target, 'PARSE')
-
-    def split_pdf(self):
-        self.manipulate_pdf(self.target, 'SPLIT')
+        PDFHandler.manipulate_pdf(self.target, 'PARSE')
 
     @staticmethod
     def manipulate_pdf(target, operation):
-        print('PDF parsing sesquence started!')
-
         # Define which file to execute
         command = state_dict[target]
 
@@ -43,17 +38,18 @@ class PDFHandler(object):
             case Command.QUESTIONS:
                 m_pdf = func(
                     'parsepdf/questions_coordinates.json', 'parsepdf/EuclidCombinedContest.pdf')
-                m_pdf.get_coordinates()
 
             case Command.SOLUTIONS:
                 m_pdf = func(
                     'parsepdf/answers_coordinates.json', 'parsepdf/EuclidCombinedSolutions.pdf')
-                m_pdf.get_coordinates()
 
 
 # Parse and split both the questions and the solutions sheets
-questions_sheet = PDFHandler('QUESTIONS')
-questions_sheet.split_pdf()
 
+print("PARSING AND SPLITTING QUESTIONS.PDF!")
+questions_sheet = PDFHandler('QUESTIONS')
+questions_sheet.manipulate_pdf('QUESTIONS', 'SPLIT')
+
+print("PARSING AND SPLITTING SOLUTIONS.PDF!")
 solutions_sheet = PDFHandler('SOLUTIONS')
-solutions_sheet.split_pdf()
+solutions_sheet.manipulate_pdf('SOLUTIONS', 'SPLIT')
