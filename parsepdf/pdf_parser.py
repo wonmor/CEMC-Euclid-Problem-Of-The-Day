@@ -49,6 +49,7 @@ class PDFParser(object):
                 if isinstance(textbox, LTText):
                     for line in textbox:
                         for char in line:
+                            
                             # If the char is a line-break or an empty space, the word is complete
                             if isinstance(char, LTAnno) or char.get_text() == ' ':
                                 if x != -1:

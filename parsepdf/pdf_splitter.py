@@ -79,7 +79,11 @@ class PDFSplitter(object):
             for j in range(len(self.base_coordinates[i]) - 1):
                 page = self.pdf_file.getPage(j + 1)
 
-                # i => Question Num. | j => Year of Test Index | 1 => y-coordinate of the question num.
+                '''
+                DEVELOPER'S GUIDE
+                i => Question Num. | j => Year of Test Index | 1 => y-coordinate of the question num.
+                '''
+
                 if i >= 2:
                     page.cropBox.upperLeft = (0, self.base_coordinates[i - 1][j][1] + 25)
                     print(f'Cropping upperLeft: {(0, self.base_coordinates[i - 1][j][1] + 25)}')
