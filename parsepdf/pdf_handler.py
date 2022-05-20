@@ -1,3 +1,7 @@
+'''
+CODE WRITTEN BY DEVELOPER JOHN SEONG IN 2022
+'''
+
 import pdf_parser
 import pdf_splitter
 
@@ -47,9 +51,10 @@ class PDFHandler(object):
 # Parse and split both the questions and the solutions sheets
 
 print("PARSING AND SPLITTING QUESTIONS.PDF!")
+
 questions_sheet = PDFHandler('QUESTIONS')
 questions_sheet.manipulate_pdf('QUESTIONS', 'SPLIT')
 
-print("PARSING AND SPLITTING SOLUTIONS.PDF!")
-solutions_sheet = PDFHandler('SOLUTIONS')
-solutions_sheet.manipulate_pdf('SOLUTIONS', 'SPLIT')
+# print("PARSING AND SPLITTING SOLUTIONS.PDF!")
+# solutions_sheet = PDFHandler('SOLUTIONS')
+# solutions_sheet.manipulate_pdf('SOLUTIONS', 'SPLIT')
