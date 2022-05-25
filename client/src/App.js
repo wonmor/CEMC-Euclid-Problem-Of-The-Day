@@ -17,9 +17,10 @@ import Home from "./components/home/home";
 
 const App = () => {
   return (
-    <div>
+    <div id="large-header" className="large-header">
+      {/* <canvas id="demo-canvas"></canvas> */}
+      <div style={{'margin': 'auto', 'minHeight': '100vh', 'maxWidth': '100vh', 'backgroundColor': 'rgb(30, 33, 36)'}}>
       <Navbar />
-      <div style={{ margin: 20, 'min-height': '100vh'}}>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/source-code" element={<SourceCode />} />
@@ -28,8 +29,8 @@ const App = () => {
         <Route path="/admin/edit/:id" element={<Edit />} />
         <Route path="/admin/create" element={<Create />} />
       </Routes>
-      </div>
       <Footer />
+      </div>
     </div>
   );
 };

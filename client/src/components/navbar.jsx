@@ -3,14 +3,7 @@ import React from "react";
 // We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
 
-// We import NavLink to utilize the react router.
-import { NavLink } from "react-router-dom";
-
-import { useLocation } from "react-router-dom";
-
-import { Helmet } from "react-helmet";
-
-const TITLE = "CEMC Euclid: POTD";
+import { NavLink, useLocation } from "react-router-dom";
 
 // Here, we display our Navbar
 export default function Navbar() {
@@ -18,10 +11,6 @@ export default function Navbar() {
 
   return (
     <div>
-      <Helmet>
-        <title>{TITLE}</title>
-        <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16" />
-      </Helmet>
       <nav
         id="navbar-main"
         className="navbar navbar-expand-xl navbar-dark bg-dark hover-shadow"

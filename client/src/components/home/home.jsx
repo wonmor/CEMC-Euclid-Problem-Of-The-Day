@@ -45,7 +45,7 @@ export default function Home() {
 
   // This following section will display the table with the records of individuals.
   return (
-    <div>
+    <div style={{'padding': '2.5%'}}>
       <div className="container-1">
         <h1>
           <b>Welcome to CEMC Euclid: Problem of the Day!</b>
@@ -62,7 +62,7 @@ export default function Home() {
           </button>
         </a>
       </div>
-      <ul id="horizontal-list" className="list-group list-group-horizontal-xl">
+      <ul id="vertical-list" className="list-group list-group-vertical">
         <li>
           <div className="container-default">
             <h1>Hey, how are you feeling?</h1>

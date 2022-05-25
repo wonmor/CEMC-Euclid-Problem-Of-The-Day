@@ -5,7 +5,6 @@ html {
     font-family: 'Rubik', sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: rgb(30, 33, 36);
     color: white;
     scroll-behavior: smooth;
 }
@@ -13,6 +12,20 @@ html {
 a {
     color: skyblue;
 }
+
+.large-header {
+    position: relative;
+    width: 100%;
+    background: #111;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: -1;
+ }
+ 
+ .demo .large-header {
+    background-color: #000000;
+ }
 
 #navbar-brand {
     margin-right: -2.5em
@@ -55,12 +68,12 @@ a {
     background: black;
 }
 
-ul#horizontal-list {
+ul#vertical-list {
     min-width: 100%;
     list-style: none;
 }
 
-ul#horizontal-list li {
+ul#vertical-list li {
     display: inline;
 }
 
