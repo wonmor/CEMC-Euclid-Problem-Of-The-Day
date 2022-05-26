@@ -2,10 +2,9 @@
 CODE WRITTEN BY DEVELOPER JOHN SEONG IN 2022
 '''
 
+import itertools
 from PyPDF2 import PdfFileWriter, PdfFileReader, PdfFileMerger
 from collections import defaultdict
-from operator import itemgetter
-from itertools import chain
 
 '''
 PDF SLICE ALGORITHM:
@@ -30,6 +29,7 @@ class PDFSplitter(object):
 
         self.json_f_dir = json_f_dir
         self.pdf_file = PdfFileReader(open(f"{pdf_f_dir}", "rb"))
+        self.page_count = self.pdf_file.numPages
         self.page_size = (0, 0)
         self.base_coordinates = defaultdict(list)
         self.transformed_coordinates = defaultdict(list)
@@ -64,52 +64,27 @@ class PDFSplitter(object):
             # Convert the Python list to NumPy array for faster and more efficient performance
             all_x_and_y = np.array(coordinates[f'{i}.'])
 
-            # Remove all items that have x-coordinates that exceed 80pt in the NumPy array
-            self.base_coordinates[i] = all_x_and_y[np.logical_not(
-                all_x_and_y[:, 0] > 80)].tolist()
+            # Remove all items that have x-coordinates that exceed 76pt or is lower than 68pt in the NumPy array
+            self.base_coordinates[i] = all_x_and_y[np.logical_and((
+                all_x_and_y[:, 0] < 74), (all_x_and_y[:, 0] > 70))].flatten().tolist()
 
-            # Sort the list by the last element in the nested list
-            self.base_coordinates[i].sort(key=lambda x: x[1])
+        for i in range(1, self.page_count - 2):
+            self.page = self.pdf_file.getPage(i)
+            print(f'Crop at index {i}')
             
-            print(f'BASE COORDINATES: {self.base_coordinates}')
-            print(f'INDIVIDUAL SIZE OF BASE COORDINATES: {len(self.base_coordinates[i])}')
+            if i == 1:
+                self.page.cropBox.upperLeft = (0, self.base_coordinates[i][1] + 25)
+                self.page.cropBox.lowerRight = (self.page_size[0], self.base_coordinates[i + 1][1] + 12.5)
 
-            self.all_sizes_base_coordinates.append(len(self.base_coordinates[i]))
+            elif i == self.page_count - 2:
+                self.page.cropBox.upperLeft = (0, self.base_coordinates[i][1] + 25)
+                self.page.cropBox.lowerRight = (self.page_size[0], self.page_size[1])
+            
+            else:
+                self.page.cropBox.upperLeft = (0, self.base_coordinates[i - 1][1] + 25)
+                self.page.cropBox.lowerRight = (self.page_size[0], self.base_coordinates[i + 1][1] - 25)
 
-            for j in range(len(self.base_coordinates[i]) - 1):
-                page = self.pdf_file.getPage(j + 1)
-
-                '''
-                DEVELOPER'S GUIDE
-                i => Question Num. | j => Year of Test Index | 1 => y-coordinate of the question num.
-                '''
-
-                if i >= 2:
-                    page.cropBox.upperLeft = (0, self.base_coordinates[i - 1][j][1] + 25)
-                    print(f'Cropping upperLeft: {(0, self.base_coordinates[i - 1][j][1] + 25)}')
-                else:
-                    page.cropBox.upperLeft = (0, self.base_coordinates[i][j][1] - 25)
-                    print(f'Exception: Cropping upperLeft: {(0, self.base_coordinates[i][j][1] + 25)}')
-
-                print(self.page_size[1])
-                
-                try:
-                    page.cropBox.lowerRight = (self.page_size[1], self.base_coordinates[i][j][1] - 25)
-                    print(f'Cropping lowerRight: {(self.page_size[1], self.base_coordinates[i][j][1] - 25)}')
-                except IndexError:
-                    print('OOPS! BREAKING FROM THE NESTED LOOP...')
-                    break
-
-                self.output.addPage(page)
-        
-        # Get the most commonly appearing integer in the list as there might have been some miscalculations in the number of tests in the PDF file...
-        self.all_sizes_base_coordinates = np.array(self.all_sizes_base_coordinates)
-
-        counts = np.bincount(self.all_sizes_base_coordinates)
-
-        self.number_of_tests = np.argmax(counts)
-
-        print(f"NUMBER OF TESTS: {self.number_of_tests}")
+            self.output.addPage(self.page)
         
         # Write the updated coordinates that only contain question numbers on the JSON file
         with open(f'{self.json_f_dir}', 'w') as f:
@@ -128,12 +103,3 @@ class PDFSplitter(object):
         print("Splitted PDF files saved!")
 
         outputStream.close()
-
-        # for i in range(1, len(self.base_coordinates)):
-            # Shift the y-coordinate up a little for cropping purposes
-            # self.trandsformed_coordinates[i] = self.base_coordinates[i] +
-
-        # self.page.mediaBox.lowerRight = (lower_right_new_x_coordinate, lower_right_new_y_coordinate)
-        # self.page.mediaBox.lowerLeft = (lower_left_new_x_coordinate, lower_left_new_y_coordinate)
-        # self.page.mediaBox.upperRight = (upper_right_new_x_coordinate, upper_right_new_y_coordinate)
-        # self.page.mediaBox.upperLeft = (upper_left_new_x_coordinate, upper_left_new_y_coordinate)

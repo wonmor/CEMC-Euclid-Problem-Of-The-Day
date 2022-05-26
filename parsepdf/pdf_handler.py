@@ -41,7 +41,7 @@ class PDFHandler(object):
         match command:
             case Command.QUESTIONS:
                 m_pdf = func(
-                    'parsepdf/questions_coordinates.json', 'parsepdf/EuclidCombinedContest.pdf')
+                    'parsepdf/questions_coordinates.json', 'parsepdf/2022EuclidContest.pdf')
 
             case Command.SOLUTIONS:
                 m_pdf = func(
@@ -56,5 +56,6 @@ questions_sheet = PDFHandler('QUESTIONS')
 questions_sheet.manipulate_pdf('QUESTIONS', 'SPLIT')
 
 # print("PARSING AND SPLITTING SOLUTIONS.PDF!")
+
 # solutions_sheet = PDFHandler('SOLUTIONS')
 # solutions_sheet.manipulate_pdf('SOLUTIONS', 'SPLIT')

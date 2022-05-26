@@ -39,7 +39,7 @@ class PDFParser(object):
 
         pages = PDFPage.get_pages(self.fp)
 
-        for page in pages:
+        for num, page in enumerate(pages, start=1):
             interpreter.process_page(page)
             layout = dev.get_result()
 
@@ -53,12 +53,12 @@ class PDFParser(object):
                             # If the char is a line-break or an empty space, the word is complete
                             if isinstance(char, LTAnno) or char.get_text() == ' ':
                                 if x != -1:
-                                    print('PDF PARSING IN PROGRESS: At %r is text: %s' % (
-                                        (math.floor(x), math.floor(y)), text))
+                                    print('PDF PARSING IN PROGRESS: At %r is text: %s and page: %d' % (
+                                        (math.floor(x), math.floor(y)), text, num))
 
                                     # Use the append feature to counteract duplicate keys
                                     self.locations[f'{text}'].append([
-                                        math.floor(x), math.floor(y)])
+                                        math.floor(x), math.floor(y), num])
 
                                 x, y, text = -1, -1, ''
 
@@ -70,11 +70,11 @@ class PDFParser(object):
 
             # If the last symbol in the PDF was neither an empty space nor a LTAnno, print the word here
             if x != -1:
-                print('PDF PARSING IN PROGRESS: At %r is text: %s' %
-                      ((math.floor(x), math.floor(y)), text))
+                print('PDF PARSING IN PROGRESS: At %r is text: %s and page: %d' %
+                      ((math.floor(x), math.floor(y)), text, num))
 
                 self.locations[f'{text}'].append(
-                    [math.floor(x), math.floor(y)])
+                    [math.floor(x), math.floor(y), num])
 
         # Round the dictionary by its value, but not the key
         self.locations = {k: v for k, v in sorted(
