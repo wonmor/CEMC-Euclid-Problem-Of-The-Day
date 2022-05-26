@@ -18,7 +18,7 @@ import Home from "./components/home/home";
 const App = () => {
   return (
     <div id="large-header" className="large-header">
-      {/* <canvas id="demo-canvas"></canvas> */}
+      <canvas style={{ position: "absolute", "z-index": "10" }} id="demo-canvas"></canvas>
       <div style={{'margin': 'auto', 'minHeight': '100vh', 'maxWidth': '100vh', 'backgroundColor': 'rgb(30, 33, 36)'}}>
       <Navbar />
       <Routes>

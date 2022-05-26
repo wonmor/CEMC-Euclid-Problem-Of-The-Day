@@ -20,7 +20,6 @@ a {
     overflow: hidden;
     background-size: cover;
     background-position: center center;
-    z-index: -1;
  }
  
  .demo .large-header {

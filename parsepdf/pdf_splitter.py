@@ -68,15 +68,23 @@ class PDFSplitter(object):
             self.base_coordinates[i] = all_x_and_y[np.logical_and((
                 all_x_and_y[:, 0] < 74), (all_x_and_y[:, 0] > 70))].flatten().tolist()
 
-        for i in range(1, self.page_count - 2):
-            self.page = self.pdf_file.getPage(i)
-            print(f'Crop at index {i}')
-            
-            if i == 1:
+        print(self.base_coordinates)
+
+        for i in range(1, 11):
+            page_num = self.base_coordinates[i][2]
+            self.page = self.pdf_file.getPage(page_num)
+
+            print(f'Crop at page {page_num}')
+            print(f'self.page_count: {self.page_count}')
+
+            # First question on the page; when the y-coordinate of previous question is smaller than the current one meaning that the current question is starting from a new page...
+            if self.base_coordinates[i][1] > 350:
                 self.page.cropBox.upperLeft = (0, self.base_coordinates[i][1] + 25)
+                print((0, self.base_coordinates[i][1] + 25))
                 self.page.cropBox.lowerRight = (self.page_size[0], self.base_coordinates[i + 1][1] + 12.5)
 
-            elif i == self.page_count - 2:
+            # Last question on the page...
+            elif (page_num == self.page_count - 1 and self.base_coordinates[i][1] < 400) or self.base_coordinates[i][1] < 400:
                 self.page.cropBox.upperLeft = (0, self.base_coordinates[i][1] + 25)
                 self.page.cropBox.lowerRight = (self.page_size[0], self.page_size[1])
             
